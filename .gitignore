@@ -30,6 +30,15 @@ TestResults.xml
 *.tfvars.json
 .terraform.tfstate.lock.info
 
+# Terraform in subdirectories
+**/.terraform/
+**/.terraform.lock.hcl
+**/*.tfstate
+**/*.tfstate.*
+**/*.tfvars
+**/*.tfvars.json
+**/.terraform.tfstate.lock.info
+
 # OS
 .DS_Store
 Thumbs.db
