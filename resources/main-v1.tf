@@ -5,8 +5,10 @@ provider "aws" {
 
 resource "aws_instance" "web" {
   ami           = data.aws_ssm_parameter.al2023_arm.value
-  instance_type = "t4g.nano"  # Graviton
-  tags = { Name = "tf-web-arm" }
+  # instance_type = "t4g.nano"  # Graviton
+  instance_type = var.instance_type
+  # tags = { Name = "tf-web-arm" }
+  tags = var.tags
 }
 
 data "aws_ssm_parameter" "al2023_arm" {
