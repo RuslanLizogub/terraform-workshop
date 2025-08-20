@@ -20,11 +20,14 @@ Hands-on Terraform labs and modules for learning IaC — from basics to reusable
 - `module/` + `resources/`: reusable modules with S3 backend
 
 ### Common Terraform commands (root or module directory)
+- `terraform fmt -check` — check formatting
+- `terraform validate` — validate configuration
 - `terraform init -upgrade` — initialize/upgrade providers
 - `terraform plan` — preview changes
 - `terraform apply` — apply changes interactively
 - `terraform plan -out tfplan` — save plan to file
 - `terraform apply tfplan` — apply saved plan
+- `terraform plan -destroy` — preview destroy changes
 - `terraform destroy` — destroy managed resources
 
 ### Backend (module with S3 state)
@@ -39,6 +42,7 @@ Hands-on Terraform labs and modules for learning IaC — from basics to reusable
 - Force unlock (remote backends): `terraform force-unlock <LOCK_ID>`
 - Plugin quarantine (macOS): `xattr -dr com.apple.quarantine ~/.terraform.d/plugin-cache .terraform`
 - Verify arch: `uname -m` and `terraform -v` (prefer `darwin_arm64` on Apple Silicon)
+- Credentials/SSO: `aws sso login --profile tf` if you see "No valid credential sources found" or `InvalidGrantException`
 
 ### Git hygiene
 - `.gitignore` excludes Terraform state, lockfiles and `.terraform/` in all subfolders
