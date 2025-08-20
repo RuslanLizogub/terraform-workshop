@@ -7,7 +7,7 @@ resource "aws_instance" "web" {
   count = 4
   ami           = data.aws_ssm_parameter.al2023_arm.value
   instance_type = "t4g.nano"  # Graviton
-  tags = { Name = "tf-web-arm" }
+  tags = {Name = lower(format("%s-%d", var.instance_name, count.index))}
 }
 
 data "aws_ssm_parameter" "al2023_arm" {
