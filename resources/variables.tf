@@ -11,3 +11,9 @@ variable "tags" {
         Environment = "dev"
     }
 }
+
+variable "environment" {
+    description = "Environment for backend app"
+    type = string
+    default = "dev"
+}

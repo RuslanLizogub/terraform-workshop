@@ -9,8 +9,8 @@ terraform {
 }
 
 provider "aws" {
-  region  = "eu-north-1"   # твой регион
-  profile = "tf"           # имя SSO-профиля из aws configure sso
+  region  = "eu-north-1"   # your AWS region
+  profile = "tf"           # SSO profile name from `aws configure sso`
 }
 
 data "aws_caller_identity" "me" {}

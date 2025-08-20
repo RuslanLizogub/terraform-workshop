@@ -19,3 +19,13 @@ module "backend_prod" {
     Environment = "prod"
   }
 }
+
+terraform {
+  backend "s3" {
+    bucket         = "tf-state-960585837301-eu-north-1"  # your S3 bucket for state
+    key            = "tfstate/eu-north-1.tfstate"        # path/file in the bucket
+    region         = "eu-north-1"
+    profile        = "tf"
+    use_lockfile     = true
+  }
+}
