@@ -4,6 +4,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "web" {
+  count = 4
   ami           = data.aws_ssm_parameter.al2023_arm.value
   instance_type = "t4g.nano"  # Graviton
   tags = { Name = "tf-web-arm" }
@@ -14,7 +15,8 @@ data "aws_ssm_parameter" "al2023_arm" {
 }
 
 resource "aws_eip" "lb" {
-  instance = aws_instance.web.id
+  count = 4
+  instance = aws_instance.web[count.index].id
   tags = { Name = "tf-web-arm-eip" }
 }
 
